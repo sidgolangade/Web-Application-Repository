@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 {% load static %}
+     <title>SAFFRON DELIGHT | Home</title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+     <!-- Add rounded corners to dropdown menu -->
+     <style>
+          .dropdown-menu {
+              border-radius: 10px;
+          }
+
+          .section-btn {
+			border-radius: 5px;
+		}
+
+          .rounded-btn {
+               border-radius: 5px;
+          }
+      </style>
+
+</head>
+<body>
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+        <!--            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar">raju</span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+         -->
+                    <!-- lOGO TEXT HERE -->
+                    <a href="index.html" class="navbar-brand"> SAFFRON DELIGHT </a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-nav-first">
+                         <li><a href="home" class="smoothScroll">Home</a></li>
+                         <li><a href="allfood" class="smoothScroll">Food Menu</a></li>
+                         <li><a href="#menu" class="smoothScroll"> Special Menu</a></li>
+						 {% if request.session.CustId is None and request.session.AdminId is not None %}
+                    <li><a href="addfoods" class="smoothScroll">Add Food</a></li>
+					{% endif %}
+					{% if request.session.CustId is not None and request.session.AdminId is None %}
+                    <li><a href="allcart" class="smoothScroll"><i class="fa fa-shopping-cart" style="font-size:18px;"></i> Cart</a></li>
+					{% endif %}
+                         <li><a href="#about" class="smoothScroll">About</a></li>
+                         <li><a href="#contact" class="smoothScroll">Contact Us</a></li>
+						{% if request.session.CustId is not None and request.session.AdminId is None %}	
+					<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user-circle" style="font-size:20px;"></i>&nbsp;My Account
+            </a>
+            <div class="dropdown-menu" style="background-color:#000;border-radius:4px;padding-top: 15px;border-bottom: 3px solid red; " aria-labelledby="navbarDropdown">
+			
+              <a class="dropdown-item" href="getcustomer"><i class="fas fa-user-edit"></i>&nbsp;&nbsp;Edit Profile</a>
+			  
+            <div class="dropdown-divider" style="padding-top: 10px;border-bottom: 1px solid white; opacity:0.7;width:90%;margin-left:5%;" ></div>
+			<div class="dropdown-divider" style="padding-bottom: 10px;" ></div>
+              <a class="dropdown-item" href="orders"><i class="fas fa-clipboard-list" ></i>&nbsp;&nbsp;&nbsp;Orders</a>
+			  
+            <div class="dropdown-divider" style="padding-bottom: 10px;" ></div>
+			  
+          </li>
+		  {% endif %}
+                    </ul>
+
+                     <ul class="nav navbar-nav navbar-right">
+					{% if request.session.CustId is not None and request.session.AdminId is None %}
+					<a href="tel:+918422081717"  class="section-btn">📞 Call Now</a>
+					{% endif %}
+					
+					{% if request.session.CustId is None and request.session.AdminId is None %}
+                    <a href=" /addcustomer" class="section-btn">Register</a>
+					{% endif %}
+					
+					{% if request.session.CustId is None and request.session.AdminId is None %}
+                    <a href=" /login" class="section-btn">Login</a>
+					{% endif %}
+					
+					{% if request.session.CustId is not None or request.session.AdminId is not None %}
+                    <a href=" /logout" class="section-btn"><i class="fa fa-sign-out" style="color:white"></i> Logout</a>
+					{% endif %}
+                </ul>
+               </div>
+
+          </div>
+     </section>
+
+
+     <!-- HOME -->
+     <section id="home" class="slider" data-stellar-background-ratio="0.5">
+          <div class="row">
+
+                    <div class="owl-carousel owl-theme">
+                         <div class="item item-first">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-12">
+                                             <h3>Sizzle</h3>
+                                             <h1>Our mission is to provide an unforgettable experience</h1>
+                                             <a href="#team" class="section-btn btn btn-default smoothScroll">Explore</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="item item-second">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-12">
+                                             <h3>Your Perfect Breakfast</h3>
+                                             <h1>The best dinning quality can be here too!</h1>
+                                             <a href="allfood" class="section-btn btn btn-default smoothScroll">Discover menu</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <div class="item item-third">
+                              <div class="caption">
+                                   <div class="container">
+                                        <div class="col-md-8 col-sm-12">
+                                             <h3>New Restaurant in Town</h3>
+                                             <h1>Enjoy our special menus every Saturday and Sunday</h1>
+                                             <a href="#contact" class="section-btn btn btn-default smoothScroll">Contact Us</a>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+          </div>
+     </section>
+
+
+     <!-- ABOUT -->
+     <section id="about" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="about-info">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
+                                   <h4>Read our story</h4>
+                                   <h2>Serving Culinary Delights Since 1995</h2>
+                              </div>
+
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>Embarking on a Culinary Journey of Authentic Indian Cuisine and Empowered Communities</p>
+                                   <p>We strive for a world where the flavors of authentic Indian food are savored and celebrated, while uplifting the lives of farmers and communities. Our commitment lies in preserving culinary traditions, providing fair opportunities, and serving exceptional Indian cuisine. <a href="index.html">SAFFRON DELIGHT</a>. Thank you.</p>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="wow fadeInUp about-image" data-wow-delay="0.6s">
+                              <img src="{% static 'images/about-image.jpg' %}" class="img-responsive" alt="">
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </section>
+
+
+     
+
+
+     <!-- MENU-->
+     <section id="menu" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                              <h2>Our Special Menus</h2>
+                              <h4>Tea Time &amp; Dining</h4>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% static 'images/dosa.jpg' %}"  class="image-popup" title="DOSA">
+                                   <img src="{% static 'images/dosa.jpg' %}" class="img-responsive" alt="" >
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Dosa</h3>
+                                             <p>South Indian / Coconut Chutney/ Sambhar</p>
+                                        </div>
+                                        <div class="menu-price">
+                                             <span>&#8377; 80</span>
+                                        </div>
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% static 'images/menu-image2.jpg' %}" class="image-popup" title="Chicken Biryani" >
+                                   <img src="{% static 'images/menu-image2.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Chicken Biryani</h3>
+                                             <p>Chicken / Rice / Healthy</p>
+                                        </div>
+                                        <div class="menu-price">
+                                             <span>&#8377; 250</span>
+                                        </div>
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% static 'images/menu-image3.jpg' %}" class="image-popup" title="Chinese Noodle">
+                                   <img src="{% static 'images/menu-image3.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Chinese Noodle</h3>
+                                             <p>Pepper / Chicken / Vegetables</p>
+                                        </div>
+                                        <div class="menu-price">
+                                             <span>&#8377; 180</span>
+                                        </div>
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% static 'images/menu-image4.jpg' %}" class="image-popup" title="Tomoto Soup">
+                                   <img src="{% static 'images/menu-image4.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Tomoto Soup</h3>
+                                             <p>Tomotoes / Tasty</p>
+                                        </div>
+                                        <div class="menu-price">
+                                             <span>&#8377; 140</span>
+                                        </div>
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% static 'images/menu-image5.jpg' %}" class="image-popup" title="Red Cake">
+                                   <img src="{% static 'images/menu-image5.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Red Cake</h3>
+                                             <p>Sweet / Soft</p>
+                                        </div>
+                                        <div class="menu-price">
+                                             <span>&#8377; 450</span>
+                                        </div>
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                         <!-- MENU THUMB -->
+                         <div class="menu-thumb">
+                              <a href="{% static 'images/menu-image6.jpg' %}" class="image-popup" title="Gulab Jamun">
+                                   <img src="{% static 'images/menu-image6.jpg' %}" class="img-responsive" alt="">
+
+                                   <div class="menu-info">
+                                        <div class="menu-item">
+                                             <h3>Gulab Jamun</h3>
+                                             <p>Sweet / Sugar-free</p>
+                                        </div>
+                                        <div class="menu-price">
+                                             <span>&#8377; 150</span>
+                                        </div>
+                                   </div>
+                              </a>
+                         </div>
+                    </div>
+
+
+               </div>
+          </div>
+     </section>
+
+
+     <!-- TESTIMONIAL -->
+     <section id="testimonial" data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                              <h2>Testimonials</h2>
+                         </div>
+                    </div>  
+
+                    <div class="col-md-offset-2 col-md-8 col-sm-12">
+                         <div class="owl-carousel owl-theme">
+                              <div class="item">
+                                   <p>Saffron Delight is an absolute gem! The flavors in every dish are truly authentic and take me back to the streets of India. The attention to detail and the warm hospitality make each visit a memorable experience.</p>
+                                        <div class="tst-author">
+                                             <h4>- Virat Anderson</h4>
+                                             
+                                        </div>
+                              </div>
+
+                              <div class="item">
+                                   <p>As a food enthusiast, I can confidently say that Saffron Delight offers an unparalleled dining experience. The quality of ingredients, the vibrant spices, and the expertly crafted dishes transport you to the heart of Indian cuisine. It's a culinary journey worth taking!.</p>
+                                        <div class="tst-author">
+                                             <h4>- Mahendra Watson</h4>
+
+                                        </div>
+                              </div>
+
+                              <div class="item">
+                                   <p>I've been searching for a truly authentic Indian restaurant, and Saffron Delight exceeded my expectations. The flavors were exquisite, and the ambiance created the perfect setting for an unforgettable evening. This is now my go-to place for incredible Indian cuisine.</p>
+                                        <div class="tst-author">
+                                             <h4>- Sachin Starc</h4>
+
+                                        </div>
+                              </div>
+
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>  
+
+
+     <!-- CONTACT -->
+     <section id="contact" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+	
+                    <div class="wow fadeInUp col-md-6 col-sm-12" data-wow-delay="0.4s">
+                         <div id="google-map">
+                              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d132498.68678169785!2d1.281505355043834!3d39.01207305714133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1299476385093943%3A0x9064725cd8426d6!2sIbiza!5e0!3m2!1sen!2sie!4v1688398765487!5m2!1sen!2sie" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                         </div>
+                    </div>
+                     
+                    </div>    
+
+                    <div class="col-md-6 col-sm-12">
+
+                         <div class="col-md-12 col-sm-12">
+                              <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                                   <h2>Contact Us</h2>
+                              </div>
+                         </div>
+
+                         <!-- CONTACT FORM -->
+                         <form action="#" method="post" class="wow fadeInUp" id="contact-form" role="form" data-wow-delay="0.8s">
+
+                              <!-- IF MAIL SENT SUCCESSFUL  // connect this with custom JS -->
+                              <h6 class="text-success">Your message has been sent successfully.</h6>
+                              
+                              <!-- IF MAIL NOT SENT -->
+                              <h6 class="text-danger">E-mail must be valid and message must be longer than 1 character.</h6>
+
+                              <div class="col-md-6 col-sm-6">
+                                   <input type="text" class="form-control" id="cf-name" name="name" placeholder="Full name">
+                              </div>
+
+                              <div class="col-md-6 col-sm-6">
+                                   <input type="email" class="form-control" id="cf-email" name="email" placeholder="Email address">
+                              </div>
+
+                              <div class="col-md-12 col-sm-12">
+                                   <input type="text" class="form-control" id="cf-subject" name="subject" placeholder="Subject">
+                                   
+                                   <textarea class="form-control" rows="6" id="cf-message" name="message" placeholder="Tell about your project"></textarea>
+                                   
+                                   <button type="submit" class="form-control rounded-btn" id="cf-submit" name="submit">Send Message</button>
+                               </div>
+                               
+                         </form>
+                    </div>
+
+               </div>
+          </div>
+     </section>          
+
+
+     <!-- FOOTER -->
+     <footer id="footer" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-3 col-sm-8">
+                         <div class="footer-info">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Find us</h2>
+                              </div>
+                              <address class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>96, Somewhere on Earth, Galaxy<br>Milky Way</p>
+                              </address>
+                         </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-8">
+                         <div class="footer-info">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Reservation</h2>
+                              </div>
+                              <address class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>0123456789 | 9876543210</p>
+                                   <p><a href="mailto:cmdzinc@gmail.com">contact@saffrondelight.com</a></p>
+                                   <p>Facebook:@SaffronDelight </p>
+                              </address>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-8">
+                         <div class="footer-info footer-open-hour">
+                              <div class="section-title">
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.2s">Open Hours</h2>
+                              </div>
+                              <div class="wow fadeInUp" data-wow-delay="0.4s">
+                                   <p>Monday: Closed</p>
+                                   <div>
+                                        <strong>Tuesday to Friday</strong>
+                                        <p>7:00 AM - 9:00 PM</p>
+                                   </div>
+                                   <div>
+                                        <strong>Saturday - Sunday</strong>
+                                        <p>11:00 AM - 12:00 PM</p>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-2 col-sm-4">
+                         <ul class="wow fadeInUp social-icon" data-wow-delay="0.4s">
+                              <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                              <li><a href="#" class="fa fa-twitter"></a></li>
+                              <li><a href="#" class="fa fa-instagram"></a></li>
+                              <li><a href="#" class="fa fa-google"></a></li>
+                         </ul>
+
+                         <div class="wow fadeInUp copyright-text" data-wow-delay="0.8s"> 
+                              <p><br>Copyright &copy; 2023 <br>saffrondelight.com 
+                         </div>
+                    </div>
+                    
+               </div>
+          </div>
+     </footer>
+
+
+     <!-- SCRIPTS -->
+     <script src="{% static 'js/jquery.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+     <script src="{% static 'js/wow.min.js' %}"></script>
+     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+     <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+     <script src="{% static 'js/smoothscroll.js' %}"></script>
+     <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>
