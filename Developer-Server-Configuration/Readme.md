@@ -1,5 +1,0 @@
-- Create a Developer Server (EC2 RHEL Instance)
-- Install Terraform on the Developer Server - https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
-- Create and Navigate to the new directory for the Terraform project - terraform-ec2-instances
-- main.tf: terraform init > terraform apply
-- Jenkins Server Installed, Ansible Server Installed, Web Server Installed
