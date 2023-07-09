@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Clean workspace and checkout the code from the GitHub repository
                 cleanWs()
-                git 'https://github.com/sidgolangade/Web-Application-Repository.git'
+                git branch: 'main', url: 'https://github.com/sidgolangade/Web-Application-Repository.git'
             }
         }
         
