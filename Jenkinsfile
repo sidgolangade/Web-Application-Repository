@@ -43,7 +43,7 @@ pipeline {
                 
                 withCredentials([sshUserPrivateKey(credentialsId: '2a67236b-f587-44a4-90f2-1e8ba1e8d313', keyFileVariable: 'SSH_PRIVATE_KEY')]) {
                     sh '''
-                    ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" ec2-user@ec2-52-48-44-190.eu-west-1.compute.amazonaws.com 'ansible-playbook -i /etc/ansible/ansible-hosts /home/ec2-user/ansible-playbooks/deploy-web-app.yml'
+                    ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" ec2-user@ec2-52-48-44-190.eu-west-1.compute.amazonaws.com 'ansible-playbook -i /etc/ansible/hosts /home/ec2-user/ansible-playbooks/deploy-web-app.yml'
                     '''
                 }
             }
