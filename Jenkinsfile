@@ -17,7 +17,7 @@ pipeline {
                 // Any additional build steps you may have
                 
                 // Collect static files (if applicable)
-                sh 'python manage.py collectstatic --noinput'
+                //sh 'python manage.py collectstatic --noinput'
             }
         }
 
