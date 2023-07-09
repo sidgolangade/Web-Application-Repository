@@ -30,7 +30,7 @@ pipeline {
         
         stage('Archive Artifacts') {
             steps {
-                archiveArtifacts(artifacts: '**/*', excludes: '')
+                archiveArtifacts artifacts: 'Web-Application-Repository/**', excludes: ''
             }
         }
         
@@ -50,3 +50,4 @@ pipeline {
         }
     }
 }
+
