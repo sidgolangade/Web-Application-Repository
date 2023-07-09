@@ -13,7 +13,6 @@ pipeline {
         stage('Build') {
             steps {
                 // Install Python and required dependencies
-                sh 'sudo yum update -y && sudo yum install -y python3'
                 sh 'pip install -r requirements.txt'
                 // Any additional build steps you may have
                 
@@ -21,7 +20,7 @@ pipeline {
                 sh 'python manage.py collectstatic --noinput'
             }
         }
-        
+
         stage('Test') {
             steps {
                 // Run tests for the Django application
