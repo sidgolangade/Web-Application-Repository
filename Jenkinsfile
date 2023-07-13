@@ -39,11 +39,12 @@ pipeline {
                 // Copy the built application code to the Ansible Server
                 withCredentials([sshUserPrivateKey(credentialsId: '2a67236b-f587-44a4-90f2-1e8ba1e8d313', keyFileVariable: 'SSH_PRIVATE_KEY')]) {
                     sh '''
-                    scp -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" -r ./* ec2-user@ec2-54-170-68-249.eu-west-1.compute.amazonaws.com:/home/ec2-user/ansible-data
+                    rsync -e "ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY" -av --exclude venv/ ./ ec2-user@ec2-54-170-68-249.eu-west-1.compute.amazonaws.com:/home/ec2-user/ansible-data/
                     '''
                 }
             }
         }
+                    // scp -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" -r ./* ec2-user@ec2-54-170-68-249.eu-west-1.compute.amazonaws.com:/home/ec2-user/ansible-data
 
         stage('Deploy using Ansible') {
             steps {
