@@ -39,7 +39,7 @@ pipeline {
                 // Copy the built application code to the Ansible Server
                 withCredentials([sshUserPrivateKey(credentialsId: '2a67236b-f587-44a4-90f2-1e8ba1e8d313', keyFileVariable: 'SSH_PRIVATE_KEY')]) {
                     sh '''
-                    scp -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" -r ./* ec2-user@ec2-34-243-229-163.eu-west-1.compute.amazonaws.com:/home/ec2-user/ansible-data
+                    scp -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" -r ./* ec2-user@ec2-54-170-68-249.eu-west-1.compute.amazonaws.com:/home/ec2-user/ansible-data
                     '''
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
                 // Run Ansible playbook on the Ansible Server
                 withCredentials([sshUserPrivateKey(credentialsId: '2a67236b-f587-44a4-90f2-1e8ba1e8d313', keyFileVariable: 'SSH_PRIVATE_KEY')]) {
                     sh '''
-                    ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" ec2-user@ec2-34-243-229-163.eu-west-1.compute.amazonaws.com 'ansible-playbook -i /etc/ansible/hosts /home/ec2-user/ansible-data/ansible-playbooks/deploy-web-app.yml'
+                    ssh -o StrictHostKeyChecking=no -i "$SSH_PRIVATE_KEY" ec2-user@ec2-54-170-68-249.eu-west-1.compute.amazonaws.com 'ansible-playbook -i /etc/ansible/hosts /home/ec2-user/ansible-data/ansible-playbooks/deploy-web-app.yml'
                     '''
                 }
             }
